@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Belajar React</title>
+  </head>
+
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+    crossorigin="anonymous"
+  />
+  <body>
+    <div id="root"></div>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const container = document.getElementById("root");
+      const root = ReactDOM.createRoot(container);
+
+      function Header({ name }) {
+        return <h1>Belajar react bersama king {name ? name : "Jack"} </h1>;
+      }
+
+      function HomePage() {
+        const students = ["Jack", "King", "Suzuran", "Awir"];
+        const [likes , setLike] = React.useState(0);
+        
+        function HandleClick(){
+          setLike(likes + 1);
+        }
+
+        return (
+          <div class="container">
+            <Header />
+            <Header />
+            <ul>
+              {students.map((student) => (
+                <li key={student}>{student}</li>
+              ))}
+            </ul>
+
+            <button onClick={HandleClick}>Like {(likes)}</button>
+          </div>
+        );
+      }
+
+      root.render(<HomePage />);
+    </script>
+  </body>
+</html>
